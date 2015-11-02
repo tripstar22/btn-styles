@@ -1,6 +1,9 @@
 
 jQuery(document).ready(function($) {
 
+    // var for width of screen
+    var windowWidth = $(window).width();
+
     // write custom functions here
     function btn1() {
 
@@ -123,8 +126,7 @@ jQuery(document).ready(function($) {
     function btn15() {
 
         var btn15Left = $("#btn15 .left"),
-            btn15Right = $("#btn15 .right"),
-            windowWidth = $(window).width();
+            btn15Right = $("#btn15 .right");
 
         if (windowWidth > 767) {
             $("#btn15").on("mouseenter", function() {
@@ -148,8 +150,7 @@ jQuery(document).ready(function($) {
     function btn16() {
 
         var btn16Left = $("#btn16 .left"),
-                btn16Right = $("#btn16 .right"),
-                windowWidth = $(window).width();
+            btn16Right = $("#btn16 .right");
 
         if (windowWidth > 767) {
             $("#btn16").on("mouseenter", function() {
@@ -173,8 +174,7 @@ jQuery(document).ready(function($) {
     function btn17() {
 
         var btn17Left = $("#btn17 .left"),
-                btn17Right = $("#btn17 .right"),
-                windowWidth = $(window).width();
+            btn17Right = $("#btn17 .right");
 
         if (windowWidth > 767) {
             $("#btn17").on("mouseenter", function() {
@@ -193,6 +193,73 @@ jQuery(document).ready(function($) {
                 TweenLite.to(btn17Right, 0.3, {left: "110px", ease: Power3.easeOut});
             });
         }
+    }
+
+    function btn18() {
+
+        var btn18Left = $("#btn18 .left"),
+            btn18Right = $("#btn18 .right");
+
+        if (windowWidth > 767) {
+            $("#btn18").on("mouseenter", function() {
+                TweenLite.to(btn18Left, 0.3, {left: "0px", ease: Power3.easeOut});
+                TweenLite.to(btn18Right, 0.3, {left: "110px", ease: Power3.easeOut});
+            });
+            $("#btn18").on("mouseleave", function() {
+                TweenLite.to(btn18Left, 0.3, {left: "-100%", ease: Power3.easeOut});
+                TweenLite.to(btn18Right, 0.3, {left: "0px", ease: Power3.easeOut});
+            });
+        }
+
+        if (windowWidth < 768) {
+            $("#btn18").on("click", function() {
+                TweenLite.to(btn18Left, 0.3, {left: "0px", ease: Power3.easeOut});
+                TweenLite.to(btn18Right, 0.3, {left: "110px", ease: Power3.easeOut});
+            });
+        }
+    }
+
+    // vars for btn19 functions
+    var btn19Left = $("#btn19 .left"),
+        btn19Right = $("#btn19 .right"),
+        iconFirstBtn19 = $("#btn19 .icon-first"),
+        iconSecondBtn19 = $("#btn19 .icon-last");
+
+    function btn19() {
+
+        if (windowWidth > 767) {
+            $("#btn19").on("mouseenter", function() {
+                TweenLite.to(btn19Left, 0.3, {left: "0px", ease: Power3.easeOut});
+                TweenLite.to(btn19Right, 0.3, {left: "110px", ease: Power3.easeOut});
+            });
+            $("#btn19").on("mouseleave", function() {
+                TweenLite.to(btn19Left, 0.3, {left: "-100%", ease: Power3.easeOut});
+                TweenLite.to(btn19Right, 0.3, {left: "0px", ease: Power3.easeOut});
+            });
+        }
+
+        if (windowWidth < 768) {
+            $("#btn19").on("click", function() {
+                TweenLite.to(btn19Left, 0.3, {left: "0px", ease: Power3.easeOut});
+                TweenLite.to(btn19Right, 0.3, {left: "110px", ease: Power3.easeOut});
+            });
+        }
+    }
+
+    function btn19Click() {
+
+        TweenLite.to(btn19Left, 0.3, {left: "0px", ease: Power3.easeOut});
+        TweenLite.to(btn19Right, 0.3, {left: "110px", ease: Power3.easeOut});
+        TweenLite.to(iconFirstBtn19, 0.3, {scale: 5, opacity: 0, ease: Power3.easeOut});
+
+        $("#btn19").on("mouseenter", function() {
+            TweenLite.to(btn19Left, 0.3, {left: "0px", ease: Power3.easeOut});
+            TweenLite.to(btn19Right, 0.3, {left: "110px", ease: Power3.easeOut});
+        });
+        $("#btn19").on("mouseleave", function() {
+            TweenLite.to(btn19Left, 0.3, {left: "0", ease: Power3.easeOut});
+            TweenLite.to(btn19Right, 0.3, {left: "110px", ease: Power3.easeOut});
+        });
     }
 
     // call all custom functions
@@ -230,14 +297,26 @@ jQuery(document).ready(function($) {
         $(window).resize(function() {
             btn17();
         });
-
-        if (windowWidth < 768) {
-            $("#btn15").on("click", btn15);
+        btn18();
+        $(window).resize(function() {
+            btn18();
+        });
+        $("#btn19").on("click", function() {
+            iconSecondBtn19.toggleClass("liked");
+        });
+        if ($("#btn19").hasClass("liked")) {
+            // do nothing
+        } else {
+            btn19();
+            $(window).resize(function() {
+                btn19();
+            });
+            $("#btn19").on("click", btn19Click);
         }
 
         // negate default btn functionality
-        $(".btn").on("click", function() {
-            event.preventDefault();
+        $(".demo-btn").on("click", function(e) {
+            e.preventDefault();
         });
 
         console.log("HOORAY INIT!");

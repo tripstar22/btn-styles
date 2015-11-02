@@ -51,12 +51,34 @@ header .col-wrap::after {
     transform: translateY(-50%);
 }
 
+.left .inner-wrap {
+    position: relative;
+}
+
+.inner-wrap .icon-last {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20%;
+    right: 20%;
+    text-align: center;
+    opacity: 1;
+}
+
 #section-4 .btn .right {
     left: 0;
 }
 
 #section-4 .btn .left {
     left: -100%;
+}
+
+.caps {
+    text-transform: uppercase;
+}
+
+.liked {
+    color: #E74C3C !important;
 }
 
 .col-wrap {
